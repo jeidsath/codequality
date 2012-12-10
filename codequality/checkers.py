@@ -60,7 +60,11 @@ class Checker(object):
         Return the version number of the tool.
         """
         cmd_pieces = [cls.tool, '--version']
-        process = Popen(cmd_pieces, stdout=PIPE, stderr=PIPE)
+        try:
+            process = Popen(cmd_pieces, stdout=PIPE, stderr=PIPE)
+            #sometimes the tool doesn't exist
+        except OSError as e:
+            return str(cls.tool) + " not found in path."
         out, err = process.communicate()
         if err:
             return ''
