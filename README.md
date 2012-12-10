@@ -7,7 +7,7 @@ is easy integration with editing environments and version control (scm) tools.
 
 ## Installation
 
-    sudo python setup.py install
+    PYTHON=$(which python); sudo $PYTHON setup.py install
 
 Then, run:
 
