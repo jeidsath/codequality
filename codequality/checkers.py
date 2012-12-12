@@ -63,7 +63,7 @@ class Checker(object):
         try:
             process = Popen(cmd_pieces, stdout=PIPE, stderr=PIPE)
             #sometimes the tool doesn't exist
-        except OSError as e:
+        except OSError:
             return str(cls.tool) + " not found in path."
         out, err = process.communicate()
         if err:
